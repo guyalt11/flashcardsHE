@@ -11,23 +11,25 @@ const FlagIcon: React.FC<FlagIconProps> = ({ country, className = "", size = 16 
   // Using SVG for proper country flags
   if (country === 'israel') {
     return (
-      <svg 
-        width={size} 
-        height={size} 
-        viewBox="0 0 16 12" 
+      <svg
+        width={size}
+        height={(size * 3) / 4} // maintain 8:6 ratio (flag is 8:6 in real life)
+        viewBox="0 0 64 48"
         className={className}
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Israeli flag with white background, blue stripes and Star of David */}
-        <rect width="16" height="12" fill="#ffffff" />
-        <rect y="0" width="16" height="2" fill="#0038b8" />
-        <rect y="10" width="16" height="2" fill="#0038b8" />
-        
-        {/* Star of David - two triangles */}
-        <path
-          d="M8,3 L9.5,6 L12,6 L10,8 L11,11 L8,9.5 L5,11 L6,8 L4,6 L6.5,6 Z"
-          fill="#0038b8"
-        />
+        {/* White background */}
+        <rect width="64" height="48" fill="#fff" />
+  
+        {/* Blue stripes */}
+        <rect y="4" width="64" height="6" fill="#0038b8" />
+        <rect y="38" width="64" height="6" fill="#0038b8" />
+  
+        {/* Star of David */}
+        <g transform="translate(32,24) scale(1.5)" fill="none" stroke="#0038b8" strokeWidth="2">
+          <polygon points="0,-10 8.66,5 -8.66,5" />
+          <polygon points="0,10 8.66,-5 -8.66,-5" />
+        </g>
       </svg>
     );
   } else if (country === 'uk') {
